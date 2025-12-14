@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="landing_pad_1">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry><box><size>0.5 0.5 0.01</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>0.5 0.5 0.01</size></box></geometry>
+        <material>
+          <script>
+            <uri>model://landing_pad_1/materials/scripts</uri>
+            <uri>model://landing_pad_1/materials/textures</uri>
+            <name>AprilTag/Tag1</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
