@@ -6,11 +6,29 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(gazebo_ros REQUIRED)
+find_package(rclpy REQUIRED)
 
-# Install the directories so ROS can find them at runtime
-install(DIRECTORY launch worlds models
+# Install Launch files
+install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
+
+# Install Models
+install(DIRECTORY models
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# Install Worlds
+install(DIRECTORY worlds
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# --- CRITICAL PART: INSTALL THE PYTHON SCRIPT ---
+# This copies the file to lib/poc1_landing_world/ so 'ros2 run' finds it
+install(PROGRAMS
+  src/mission_control.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+# ------------------------------------------------
 
 ament_package()
